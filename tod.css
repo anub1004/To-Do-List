@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background: linear-gradient(135deg, #153677, #4e085f);
+    height: 100vh;
+}
+.container {
+    background: white;
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px auto;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(80, 37, 37, 0.1);
+    border-radius: 20px;
+    text-align: left;
+    flex-wrap: wrap;
+}
+h1 {
+    justify-content: center;
+    align-items: center;
+    color: #a10606;
+    top: 0px;
+}
+.inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+#inputtext {
+    border-radius: 10px;
+    width: 250px;
+    height: 35px;
+    padding: 10px;
+}
+#btn {
+    border-radius: 10px;
+    width: 100px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    background-color: #4cee4f;
+}
+.tasks {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    color: rgb(0, 0, 0);
+}
+.tasks ul {
+    display: flex;
+    float: left;
+    text-align: left;
+    flex-direction: column;
+    margin: 0px;
+    padding-left: 5px;
+}
+.tasks ul li {
+    text-decoration: none;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;   
+    list-style: none;
+    text-align: left;
+    min-height: 40px;        
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: relative;
+    padding: 10px 40px 10px 40px; 
+    word-wrap: break-word;    
+    overflow-wrap: break-word;
+    white-space: normal;         
+}
+.tasks ul li::before {
+    content: ""; 
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-image: url('radio.png');
+    background-size: cover; 
+    background-position: center;
+}
+.tasks ul li.checked {
+    text-decoration: line-through;
+}
+.tasks ul li.checked::before {
+    background-image: url('image.png');
+}
+.close {
+    font-size: 25px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    cursor: pointer;
+}
+.headi {
+    display: flex;
+}
+.headi img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    display: flex;
+}
+.dt {
+    display: inline-block;
+    border-radius: 20px;
+    max-width: 280px;
+    margin: 5px 0;
+    font-size: 12px;
+    color: #555;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
