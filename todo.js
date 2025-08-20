@@ -77,40 +77,56 @@ function tasknotgive() {
 
 setInterval(check, 1000);
 
+
 function check() {
-  let now = new Date();
+    let now = new Date();
+
+    let tasks = document.querySelectorAll('.listtask li');
+
+    tasks.forEach(li => {
+        let p = li.querySelector('.dt'); 
+        if (!p) return;
+
+        let inputDate = new Date(p.innerHTML);
+        alt = false;
+       
+        if (
+            now.getFullYear() === inputDate.getFullYear() &&
+            now.getMonth() === inputDate.getMonth() &&
+            now.getDate() === inputDate.getDate() &&
+            now.getHours() === inputDate.getHours() &&
+            now.getMinutes() === inputDate.getMinutes()
+        ) {
+            
+            if (!li.classList.contains('notified')) {
+
+         
+                let msg = new SpeechSynthesisUtterance(li.firstChild.textContent);
+                msg.lang='hi-IN'; 
+                setTimeout(() => {
+                    if (!alt) {
+                        window.speechSynthesis.speak(  msg);
+                        alt = true;
+                    }
+                }, 7000);
 
 
-  let tasks = document.querySelectorAll(".listtask li");
 
-  tasks.forEach(li => {
-    let dtElem = li.querySelector(".dt");
-    if (!dtElem) return;
+                au.play();
+        
+                li.classList.add('notified');
+            }
+        }
 
-    let inputDate = new Date(dtElem.innerText);
-
-    if (
-      now.getFullYear() === inputDate.getFullYear() &&
-      now.getMonth() === inputDate.getMonth() &&
-      now.getDate() === inputDate.getDate() &&
-      now.getHours() === inputDate.getHours() &&
-      now.getMinutes() === inputDate.getMinutes()
-    ) {
-      if (!li.dataset.alerted) {
-        li.dataset.alerted = "true";  
-        au.play();
-
-        setTimeout(() => {
-          au.pause();
-          au.currentTime = 0; 
-        }, 10000);
-      }
-    }
-    else if (
-      now > inputDate
-    ) {
-      li.remove();
-      saves();
-    }
-  });
+        else if (
+            now.getFullYear() === inputDate.getFullYear() &&
+            now.getMonth() === inputDate.getMonth() &&
+            now.getDate() === inputDate.getDate() &&
+            now.getHours() === inputDate.getHours() &&
+            now.getMinutes() > inputDate.getMinutes()
+        ) {
+            li.remove();
+        }
+    });
 }
+
