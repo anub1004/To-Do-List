@@ -1,6 +1,4 @@
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
+
 let inputbox = document.querySelector("input");
 let list = document.querySelector('.listtask');
 let au = document.querySelector('audio');
@@ -132,5 +130,6 @@ function check() {
         }
     });
 }
+
 
 
